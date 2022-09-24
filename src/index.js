@@ -1,6 +1,10 @@
 import './css/styles.css';
 import axios from "axios";
 import Notiflix from 'notiflix';
+import {
+    createMarkupCard
+} from './div-gallery';
+import API from './fetchPixabay'
 
 const DEBOUNCE_DELAY = 300;
 
