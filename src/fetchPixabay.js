@@ -1,18 +1,28 @@
+
+
+import getRefs from './get-refs';
+import renderMarkupImageInfo from './markup';
+
+const refs = getRefs();
+
 var API_KEY = '30081282-1c3fc5ff0122a52a3b21ea25b';
 const BASE_URL = 'https://pixabay.com/api/';
 
-// var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('search');
-// $.getJSON(URL, function(data){
-// if (parseInt(data.totalHits) > 0)
-//     $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
-// else
-//     console.log('No hits');
-// })
+let page = 1;
 
-
-function fetchImag(search) {
-    return fetch(`${BASE_URL}?key=${API_KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true`)
-        .then(response => response.json());
-}
-
-export default { fetchImag };
+export default  
+async function fetchPixabay() {
+    const searchQuery = refs.searchInput.value;
+    try {
+      const URL = await axios.get(
+        `${BASE_URL}?key=${API_KEY}&q=${searchQuery}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${page}`
+      );
+      if (URL.data.hits.length === 0 || totalPageOfResponse === page) {
+        Notiflix.Notify.warning("We're sorry, but this is the last page.");
+      }
+      console.log(page);
+      renderMarkupImageInfo(URL.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
