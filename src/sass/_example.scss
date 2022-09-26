@@ -44,7 +44,7 @@
   min-height: 40px;
   padding: 10px;
   border: solid 2px transparent;
-  background-color: rgb(236, 175, 44);
+  background-color: rgb(238, 236, 132);
   transition: background-color 1000ms, box-shadow 500ms ease;
 
   &:focus {
@@ -63,8 +63,8 @@
   padding: 10px 40px;
   min-height: 35px;
   border: solid 2px transparent;
-  border-left: 1px solid gray;
-  background-color: yellow;
+  border-left: 1px solid rgb(173, 171, 171);
+  background-color: rgb(133, 212, 68);
   transition: background-color 1000ms, box-shadow 500ms ease;
 
   &:focus,
